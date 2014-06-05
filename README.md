@@ -1,4 +1,4 @@
-# Algebra-SPA 
+ # Algebra-SPA 
 
 SPA Strukture Podataka i Algoritmi (Data structures and algorithms)
 
