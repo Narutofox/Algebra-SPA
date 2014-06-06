@@ -2,7 +2,7 @@
 #include"symbol_table.h"
 #include <vector>
 
-symbol_table unos(vector<student> *polje) {
+symbol_table unos(vector<student> &polje) {
 	symbol_table st;
 	student a;
 	string s;
