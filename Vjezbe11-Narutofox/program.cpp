@@ -30,20 +30,19 @@ symbol_table unos(vector<student> polje) {
 	cout <<"Zelite jos Da/Ne?"; 
 	cin >> jos;
 	} while (jos == "Da");
-	for (unsigned int i = 1; i < polje.size(); i++)
+	for (int i = 0; i < polje.size()-1; i++)
 	{
-		student s_temp = polje[i];
 
-		st.put(a.jmbag,s_temp);
+		st.put(a.jmbag,polje[i]);
 	}
 	return st;
 }
 void Pretrazivanje(symbol_table ps3){
-	string s;
-	cout <<"Unesite JMBAG studenta: ";
-	cin >> s;
-
-	student* pronalazak = ps3.get(s);
+	string ls;
+	cout <<"Unesite JMBAG studenta: " << endl;
+	cin >> ls;
+	
+	student* pronalazak = ps3.get(ls);
 
 	if (pronalazak != nullptr)
 	{
@@ -51,18 +50,18 @@ void Pretrazivanje(symbol_table ps3){
 	}
 	else
 	{
-		cout <<"Student sa trazenim JMBAG-om ne postoji "; 
+		cout <<"Student sa trazenim JMBAG-om ne postoji " << endl; 
 	}
 
 }
 
 void Brisanje(symbol_table ps4 ){
 	string p;
-	cout <<"Unesite JMBAG studenta kojeg zelite izbrisati: ";
+	cout <<"Unesite JMBAG studenta kojeg zelite izbrisati: " << endl;
 	cin >> p;
 	if (ps4.remove(p))
 	{
-		cout <<"Student uspjesno izbrisan ";
+		cout <<"Student uspjesno izbrisan " << endl;
 	}
 	else
 	{

@@ -5,7 +5,7 @@ symbol_table::symbol_table(){
 }
 
 bool symbol_table:: put(string key, ELTYPE value){
-	for (POSITION node = 0; node< _lista.end(); node->next)
+	for (POSITION node = _lista.first(); node != _lista.end(); node=node->next)
 	{
 		if (node->element.jmbag == key)
 		{
@@ -19,7 +19,7 @@ bool symbol_table:: put(string key, ELTYPE value){
 }
 
 ELTYPE* symbol_table:: get(string key){
-	for (POSITION node = 0; node< _lista.end(); node->next)
+	for (POSITION node = _lista.first(); node != _lista.end(); node=node->next)
 	{
 		if (node->element.jmbag == key)
 		{
@@ -30,7 +30,7 @@ ELTYPE* symbol_table:: get(string key){
 }
 
 bool symbol_table:: remove(string key){
-	for (POSITION node = 0; node< _lista.end(); node->next)
+	for (POSITION node = _lista.first(); node!= _lista.end(); node=node->next)
 	{
 		if (node->element.jmbag == key)
 		{
