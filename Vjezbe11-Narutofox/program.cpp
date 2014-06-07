@@ -1,9 +1,8 @@
 #include<iostream>
 #include"symbol_table.h"
-#include <vector>
 
-symbol_table unos(vector<student> &polje) {
-	symbol_table st;
+
+symbol_table unos(symbol_table st) {
 	student a;
 	string s;
 	string jos;
@@ -15,26 +14,18 @@ symbol_table unos(vector<student> &polje) {
 	cin >> a.prezime;
 	cout <<"Unesite JMBAG studenta (NAPOMENA JMBAG NESMIJE ZAPOCETI S NULOM!) " << endl;
 	cin >> a.jmbag;
-	/*a.jmbag =  atoi(s.c_str());*/
-	for (unsigned int i = 0; i < polje.size(); i++)
-	{
-		if (a.jmbag == polje[i].jmbag)
+		while (!st.put(a.jmbag,a))
 		{
-			cout <<"JMBAG vec postoji! " << endl;
-			return unos(polje);
+	cout <<"JMBAG vec postoji";
+		cout <<"Unesite JMBAG studenta (NAPOMENA JMBAG NESMIJE ZAPOCETI S NULOM!) " << endl;
+		cin >> a.jmbag;
 		}
-	}
 	cout <<"Unesite broj indexa studenta: " << endl;
 	cin >> a.broj_indeksa;
-	polje.push_back(a);
 	cout <<"Zelite jos Da/Ne?"; 
 	cin >> jos;
 	} while (jos == "Da");
-	for (int i = 0; i < polje.size()-1; i++)
-	{
-
-		st.put(a.jmbag,polje[i]);
-	}
+	
 	return st;
 }
 void Pretrazivanje(symbol_table ps3){
@@ -46,7 +37,7 @@ void Pretrazivanje(symbol_table ps3){
 
 	if (pronalazak != nullptr)
 	{
-		cout << pronalazak->ime <<" " << pronalazak->prezime;
+		cout << pronalazak->ime <<" " << pronalazak->prezime << endl;
 	}
 	else
 	{
@@ -69,28 +60,33 @@ void Brisanje(symbol_table ps4 ){
 	}
 }
 int main(){
-	symbol_table studenti;
-	vector<student>polje;
+	symbol_table st;
+	
 	char izbor;
+	
+	do
+	{
 	cout <<"Koju operaciju zelite? " << endl;
 	cout <<"A) Unos " <<endl << "B) Pretrazivanje " << endl <<"C) Brisanje " <<endl<< "D) Izlaz "<< endl ;
 	cin >> izbor;
 	switch (izbor)
 	{
 	case 'A': 
-		studenti = unos(polje);
+		unos(st);
 		break;
 	case 'B' :
-		Pretrazivanje(studenti);
+		Pretrazivanje(st);
 		break;
 	case 'C' :
-		Brisanje(studenti);
+		Brisanje(st);
 		break;
 	case 'D' :
-		return 0;
+		break;
 	default:
 		cout << "Pogresan unos " << endl;
-		return main();
 	}
-	return main();
+
+	} while ( izbor != 'D');
+	
+return 0;
 }
